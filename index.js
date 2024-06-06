@@ -4,17 +4,23 @@ import cors from "cors";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import userRoutes from "./src/routes/userRoutes.js";
+import adminRoutes from "./src/routes/adminRoutes.js";
+import clientRoutes from './src/routes/clientRoutes.js'
 
 dotenv.config();
 const app = express();
 app.use(bodyParser.json());
-app.use(cors());
+app.use(cors({
+  methods: ['GET', 'POST', 'PATCH', 'DELETE']
+}));
 
 app.get("/", (req, res) => {
   res.status(200).send("Server is alive");
 });
 
 app.use("/api/user", userRoutes);
+app.use("/api/admin", adminRoutes);
+app.use("/api", clientRoutes)
 
 mongoose
   .connect(process.env.MONGODB_URI)
