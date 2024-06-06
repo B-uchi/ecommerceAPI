@@ -1,6 +1,8 @@
 import emailValidator from "email-validator";
-import User from "../models/User";
-import createSecretToken from "../utils/createToken";
+import User from "../models/User.js";
+import createSecretToken from "../utils/createToken.js";
+import bcryptjs from "bcryptjs"
+import Cart from "../models/Cart.js";
 
 export const signUp = async (req, res) => {
   console.log("Sign Up request");
@@ -23,7 +25,8 @@ export const signUp = async (req, res) => {
       username,
     });
     const savedUser = await user.save();
-    const userCart = await Cart({ user: savedUser._id });
+    const userCart = await Cart({ userId: savedUser._id })
+    await userCart.save()
     const token = createSecretToken(savedUser._id);
 
     delete savedUser.password;
