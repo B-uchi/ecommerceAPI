@@ -1,15 +1,19 @@
-import { Schema, model } from "mongoose";
+import mongoose from "mongoose";
 
-const userSchema = new Schema(
+const userSchema = new mongoose.Schema(
   {
     name: {
       type: String,
-      required: true,
+      required: true
     },
-    isAdmin: { type: Boolean, default: false },
+    isAdmin: {
+      type: Boolean,
+      default: false,
+    },
     username: {
-      unique: true,
+      type: String,
       required: true,
+      unique: true,
     },
     location: {
       type: String,
@@ -28,4 +32,5 @@ const userSchema = new Schema(
   { timestamps: true }
 );
 
-export default model("User", userSchema);
+export default mongoose.model("User", userSchema);
+

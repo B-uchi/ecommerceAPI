@@ -1,4 +1,5 @@
-import { Schema, model } from "mongoose";
+import mongoose from "mongoose";
+import { Schema } from "mongoose";
 
 const cartSchema = new Schema(
   {
@@ -11,7 +12,6 @@ const cartSchema = new Schema(
       {
         productId: { type: Schema.Types.ObjectId, ref: "Product" },
         quantity: { type: Number, default: 1 },
-        default: [],
       },
     ],
     amount: { type: Number, default: 0 },
@@ -19,4 +19,4 @@ const cartSchema = new Schema(
   { timestamps: true }
 );
 
-export default model("Cart", cartSchema);
+export default mongoose.model("Cart", cartSchema);
