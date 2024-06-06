@@ -34,7 +34,7 @@ export const createProduct = async (req, res) => {
 };
 
 export const deleteProduct = async (req, res) => {
-  const { productId } = req.body;
+  const productId = req.params.productId;
   if (!productId)
     return res.status(400).json({ message: "ProductID is required" });
 
@@ -85,7 +85,7 @@ export const updateProduct = async (req, res) => {
 };
 
 export const featureProduct = async (req, res) => {
-  const { productId } = req.body;
+  const productId = req.params.productId;
   if (!productId)
     return res.status(400).json({ message: "ProductID is required" });
 

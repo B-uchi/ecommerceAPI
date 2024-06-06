@@ -6,8 +6,8 @@ import { createProduct, deleteProduct, featureProduct, updateProduct } from "../
 const router = Router()
 
 router.post('/createProduct', verifyToken, userCacheMiddleware, checkAdminMiddleware, createProduct)
-router.put('/updateProduct', verifyToken, userCacheMiddleware, checkAdminMiddleware, updateProduct)
-router.delete('/deleteProduct', verifyToken, userCacheMiddleware, checkAdminMiddleware, deleteProduct)
-router.put('/featureProduct', verifyToken, userCacheMiddleware, checkAdminMiddleware, featureProduct)
+router.put('/updateProduct/:productId', verifyToken, userCacheMiddleware, checkAdminMiddleware, updateProduct)
+router.delete('/deleteProduct/:productId', verifyToken, userCacheMiddleware, checkAdminMiddleware, deleteProduct)
+router.put('/featureProduct/:productId', verifyToken, userCacheMiddleware, checkAdminMiddleware, featureProduct)
 
 export default router;
