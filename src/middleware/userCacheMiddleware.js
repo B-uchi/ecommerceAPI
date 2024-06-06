@@ -1,5 +1,5 @@
 import NodeCache from "node-cache";
-import User from "../models/User";
+import User from "../models/User.js";
 const userCache = new NodeCache({ stdTTL: 3600 });
 
 const userCacheMiddleware = async (req, res, next) => {
