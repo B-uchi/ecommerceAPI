@@ -2,7 +2,7 @@ import NodeCache from "node-cache";
 import User from "../models/User.js";
 const userCache = new NodeCache({ stdTTL: 3600 });
 
-const userCacheMiddleware = async (req, res, next) => {
+export const userCacheMiddleware = async (req, res, next) => {
   const userID = req.userID;
   const cachedUser = userCache.get(userID);
   if (cachedUser) {
@@ -20,4 +20,11 @@ const userCacheMiddleware = async (req, res, next) => {
   }
 };
 
-export default userCacheMiddleware;
+export const checkAdminMiddleware = (req, res, next) => {
+  const user = req.user;
+  if (user.role === "admin") {
+    next();
+  } else {
+    res.status(403).json({ message: "Unauthorized" });
+  }
+};
