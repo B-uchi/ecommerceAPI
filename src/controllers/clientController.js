@@ -1,7 +1,12 @@
 import Product from "../models/Product.js";
 
 export const fetchProducts = async (req, res) => {
+  const category = req.query.category;
   try {
+    if (category) {
+      const products = await Product.find({ categories: {$in: [ category ]} });
+      return res.status(200).json(products);
+    }
     const products = await Product.find();
     return res.status(200).json(products);
   } catch (error) {
