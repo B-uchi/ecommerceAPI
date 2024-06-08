@@ -22,7 +22,7 @@ export const userCacheMiddleware = async (req, res, next) => {
 
 export const checkAdminMiddleware = (req, res, next) => {
   const user = req.user;
-  if (user.role === "admin") {
+  if (user.isAdmin) {
     next();
   } else {
     res.status(403).json({ message: "Unauthorized" });
