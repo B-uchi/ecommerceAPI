@@ -6,7 +6,6 @@ const router = Router()
 router.get("/fetchProducts", fetchProducts)
 router.get("/fetchProduct/:productId", fetchProduct)
 router.get("/fetchCategories", fetchCategories)
-// router.get("/fetchCategory/:categoryId")
 router.get("/fetchFeaturedProducts", fetchFeaturedProducts)
 
 export default router;

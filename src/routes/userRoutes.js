@@ -4,7 +4,9 @@ import { verifyToken } from "../middleware/middleware.js";
 import { userCacheMiddleware } from "../middleware/userCacheMiddleware.js";
 import {
   addToCart,
+  checkout,
   clearCart,
+  fetchOrders,
   getCart,
   removeFromCart,
   updateQuantity,
@@ -25,5 +27,7 @@ router.delete(
 router.put("/updateQuantity", verifyToken, userCacheMiddleware, updateQuantity);
 router.get("/getCart", verifyToken, userCacheMiddleware, getCart);
 router.delete("/clearCart", verifyToken, userCacheMiddleware, clearCart);
+router.post("/checkout", verifyToken, userCacheMiddleware, checkout);
+router.get("/fetchOrders", verifyToken, userCacheMiddleware, fetchOrders);
 
 export default router;
