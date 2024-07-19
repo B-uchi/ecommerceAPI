@@ -42,7 +42,7 @@ export const deleteProduct = async (req, res) => {
 
   try {
     try {
-      const product = await Product.deleteOne({ _id: new ObjectId(productId) });
+      await Product.deleteOne({ _id: new ObjectId(productId) });
       return res.sendStatus(200);
     } catch (error) {
       return res.status(400).json({ message: "Product not found" });
